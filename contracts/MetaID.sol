@@ -22,6 +22,7 @@ contract MetaID is MetaID721, Security, Ownable {
         uint256 currentToken = totalSupply + 1;
         _mint(_address, currentToken);
         hasId[_address] = true;
+        totalSupply++;
     }
 
     function setBaseTokenURI(string memory baseURI) external onlyOwner {
