@@ -20,7 +20,7 @@ contract MetaCert is MetaID1155, Security, Ownable {
     mapping(address => EnumerableSet.UintSet)
         internal addressToObtainedCertificates;
 
-    uint256[] public courseIds = [1, 2, 3, 4, 5]; // assuming there are 5 courses
+    EnumerableSet.UintSet private courseIds;
 
     constructor() MetaID1155("MetaCert", "MCERT") {}
 
@@ -36,16 +36,11 @@ contract MetaCert is MetaID1155, Security, Ownable {
     }
 
     function isValidCourseId(uint256 _courseId) internal view returns (bool) {
-        for (uint256 i = 0; i < courseIds.length; i++) {
-            if (courseIds[i] == _courseId) {
-                return true;
-            }
-        }
-        return false;
+        return courseIds.contains(_courseId);
     }
 
     function addNewCourse(uint256 _id) external onlyOwner {
-        courseIds.push(_id);
+        courseIds.add(_id);
     }
 
     function setBaseTokenURI(string memory baseURI) external onlyOwner {
