@@ -2,6 +2,9 @@
 
 MetaID is the key component to connect the proof of personhood to an NFT issued by the MetaID721 contract. It allows for the minting of unique MetaIDs associated with Ethereum addresses.
 
+**MetaID Contract Address**: 0xCC779eA62dde267a66D7C36e684Ee32d498c0a5F
+**MetaCert Contract Address**: 0xE359d0F906955eb6Cc096d8F7F561f767DF997B8
+
 ## Dependencies
 
 The MetaID contract relies on the following libraries:
