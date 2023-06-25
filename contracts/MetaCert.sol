@@ -43,6 +43,14 @@ contract MetaCert is MetaID1155, Security, Ownable {
         courseIds.add(_id);
     }
 
+    function getCourseIds() external view returns (uint256[] memory) {
+        uint256[] memory ids = new uint256[](courseIds.length());
+        for (uint256 i = 0; i < courseIds.length(); i++) {
+            ids[i] = courseIds.at(i);
+        }
+        return ids;
+    }
+
     function setBaseTokenURI(string memory baseURI) external onlyOwner {
         _setBaseTokenURI(baseURI);
     }
