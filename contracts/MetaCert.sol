@@ -51,6 +51,24 @@ contract MetaCert is MetaID1155, Security, Ownable {
         return ids;
     }
 
+    function getCertByAddress(
+        address _address
+    ) external view returns (uint256[] memory) {
+        uint256[] memory certificates = new uint256[](
+            addressToObtainedCertificates[_address].length()
+        );
+
+        for (
+            uint256 i = 0;
+            i < addressToObtainedCertificates[msg.sender].length();
+            i++
+        ) {
+            certificates[i] = addressToObtainedCertificates[msg.sender].at(i);
+        }
+
+        return certificates;
+    }
+
     function setBaseTokenURI(string memory baseURI) external onlyOwner {
         _setBaseTokenURI(baseURI);
     }
