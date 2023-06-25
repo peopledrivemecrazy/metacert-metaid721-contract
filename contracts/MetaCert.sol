@@ -72,4 +72,8 @@ contract MetaCert is MetaID1155, Security, Ownable {
     function setBaseTokenURI(string memory baseURI) external onlyOwner {
         _setBaseTokenURI(baseURI);
     }
+
+    function uri(uint256 id) public view returns (string memory) {
+        return string(abi.encodePacked(baseTokenURI, _toString(id)));
+    }
 }
