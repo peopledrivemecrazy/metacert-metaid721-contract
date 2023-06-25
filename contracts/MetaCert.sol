@@ -22,7 +22,7 @@ contract MetaCert is MetaID1155, Security, Ownable {
 
     EnumerableSet.UintSet private courseIds;
 
-    constructor() MetaID1155("MetaCert", "MCERT") {}
+    constructor() MetaID1155("MetaCertV2", "MCERTV2") {}
 
     function mintCert(address _address, uint256 _courseId) external onlyOwner {
         require(isValidCourseId(_courseId), "Invalid courseId");
@@ -60,10 +60,10 @@ contract MetaCert is MetaID1155, Security, Ownable {
 
         for (
             uint256 i = 0;
-            i < addressToObtainedCertificates[msg.sender].length();
+            i < addressToObtainedCertificates[_address].length();
             i++
         ) {
-            certificates[i] = addressToObtainedCertificates[msg.sender].at(i);
+            certificates[i] = addressToObtainedCertificates[_address].at(i);
         }
 
         return certificates;
